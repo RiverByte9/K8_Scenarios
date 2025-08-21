@@ -1,0 +1,17 @@
+# ds-no-toleration.yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds-no-toleration
+spec:
+  selector:
+    matchLabels:
+      app: ds-no-toleration
+  template:
+    metadata:
+      labels:
+        app: ds-no-toleration
+    spec:
+      containers:
+      - name: nginx
+        image: nginx

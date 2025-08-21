@@ -1,0 +1,21 @@
+# ds-toleration-only.yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds-toleration-only
+spec:
+  selector:
+    matchLabels:
+      app: ds-toleration-only
+  template:
+    metadata:
+      labels:
+        app: ds-toleration-only
+    spec:
+      tolerations:
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+      containers:
+      - name: nginx
+        image: nginx
