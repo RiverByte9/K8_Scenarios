@@ -15,9 +15,11 @@ demo-cluster-worker          Ready    <none>          9m      v1.33.1
 demo-cluster-worker2         Ready    <none>          9m      v1.33.1
 ```
 
-Master node वर default taint:
+Default Taint on Master Node
+
 
 ```bash
+kind create cluster --name demo-cluster --config kind-config.yaml
 kubectl describe node demo-cluster-control-plane | grep Taints
 ```
 
@@ -63,5 +65,6 @@ Result: Pod guaranteed to run on master node
 
 kubectl apply -f ds-toleration-nodeselector.yaml
 kubectl get pods -o wide
+
 
 
